@@ -1,5 +1,7 @@
 <?php
 
+require_once "../../config.php";
+
 $regex_name = "/^[a-zA-ZÀ-ú]+$/";
 $regex_password = "/^[a-zA-Z0-9]{8,30}+$/";
 $regex_pseudo = "/^[^<>]+$/";
@@ -88,14 +90,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($error)) {
 
         // On se connete
-        try {
-            $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        var_dump($pdo);
+        // try {
 
-        header("Location: ../../src/View/view_confirmation.php");
+        // } catch (\Throwable $th) {
+        //throw $th;
+        // }
+
+        // header("Location: ../../src/View/view_confirmation.php");
     }
 }
 
