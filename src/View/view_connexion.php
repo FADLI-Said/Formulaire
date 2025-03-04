@@ -24,8 +24,7 @@
 </head>
 
 <body class="container">
-    <form type="submit" class="text-center m-auto align-content-center" method="POST" novalidate>
-        <h1></h1>
+    <form type="submit" class="text-center m-auto align-content-center was-validated" method="POST" novalidate>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" value="" required>
@@ -35,7 +34,7 @@
             <input type="password" class="form-control" id="password" value="" required>
         </div>
         <button type="submit" class="btn btn-primary mb-3">Connexion</button>
-        <a href="./inscription.php">Pas encore de compte ? Inscrivez-vous !</a>
+        <a href="../Controller/controller_inscription.php">Pas encore de compte ? Inscrivez-vous !</a>
     </form>
 
 

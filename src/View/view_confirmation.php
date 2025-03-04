@@ -1,3 +1,5 @@
+<?php include_once "../../templates/head.php"; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -14,7 +16,7 @@
         Merci de votre inscription ! Vous pouvez dorénavant vous connecter.
         <i class="fa-solid fa-face-smile-wink"></i>
     </h1>
-    <a href="./connexion.php">Vas te connecter au meilleur site du monde</a>
+    <a href="../Controller/controller_connexion.php">Vas te connecter au meilleur site du monde</a>
 
     <script src="https://kit.fontawesome.com/50a1934b21.js" crossorigin="anonymous"></script>
 </body>
