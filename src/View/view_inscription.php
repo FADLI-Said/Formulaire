@@ -79,11 +79,17 @@ include_once "../../templates/head.php";
 
         </div>
 
-        <div class="col-12 text-end">
+        <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary">S'inscrire</button>
         </div>
 
     </form>
+
+    <div class="col-12 text-center mt-3">
+        <a href="../Controller/controller_connexion.php">
+            <button class="btn btn-danger">Retour</button>
+        </a>
+    </div>
 
     <script src="https://kit.fontawesome.com/50a1934b21.js" crossorigin="anonymous"></script>
 </body>
