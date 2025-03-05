@@ -16,7 +16,8 @@
         Merci de votre inscription ! Vous pouvez dorénavant vous connecter.
         <i class="fa-solid fa-face-smile-wink"></i>
     </h1>
-    <a href="../Controller/controller_connexion.php">Vas te connecter au meilleur site du monde</a>
+    <a href="../Controller/controller_connexion.php" class="btn btn-primary">Vas te connecter au meilleur site du
+        monde</a>
 
     <script src="https://kit.fontawesome.com/50a1934b21.js" crossorigin="anonymous"></script>
 </body>
