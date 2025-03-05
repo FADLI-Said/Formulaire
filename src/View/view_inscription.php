@@ -30,7 +30,7 @@ include_once "../../templates/head.php";
 
         <div class="col-md-12">
             <label for="mail" class="form-label"><i class="fa-solid fa-envelope"></i> Mail</label>
-            <input type="mail" class="form-control" id="mail" name="mail" value="<?= $_POST['mail'] ?? '' ?>"
+            <input type="email" class="form-control" id="mail" name="mail" value="<?= $_POST['mail'] ?? '' ?>"
                 required>
             <p class="text-danger"><?= $error['mail'] ?? '' ?></p>
         </div>

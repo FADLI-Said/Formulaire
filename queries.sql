@@ -16,3 +16,10 @@ insert into
         "ich.dev.fr@gmail.com",
         "JeSuisIchem"
     )
+SELECT
+    *
+FROM
+    `76_users`
+where
+    user_mail = "tanjiro76610@outlook.fr"
+    or user_pseudo = "mattongg"
