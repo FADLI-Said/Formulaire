@@ -22,4 +22,10 @@ FROM
     `76_users`
 where
     user_mail = "tanjiro76610@outlook.fr"
-    or user_pseudo = "mattongg"
+    or user_pseudo = "mattongg";
+
+select
+    *
+from
+    `76_posts` as a
+    inner join `76_pictures` as b on a.post_id = b.post_id

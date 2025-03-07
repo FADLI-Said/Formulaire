@@ -4,6 +4,6 @@
 define("DB_HOST","localhost");
 define("DB_NAME","afpa-gram");
 define("DB_USER","Saïd");
-define("DB_PASS","Z7KGPJQKpq3g4Psm");
+define("DB_PASS","r.jdGMFV0FBF.l-X");
 
 ?>

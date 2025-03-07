@@ -85,7 +85,7 @@ include_once "../../templates/head.php";
 
     </form>
 
-    <div class="col-12 text-center mt-3">
+    <div class="col-12 text-center my-3">
         <a href="../Controller/controller_connexion.php" class="btn btn-danger">
             Retour
         </a>
