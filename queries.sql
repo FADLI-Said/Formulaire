@@ -28,4 +28,24 @@ select
     *
 from
     `76_posts` as a
-    inner join `76_pictures` as b on a.post_id = b.post_id
+    inner join `76_pictures` as b on a.post_id = b.post_id;
+
+SELECT
+    *
+from
+    `76_posts`
+where
+    user_d in (
+        (
+            select
+                user_id,
+                group_concat (fav_id)
+            from
+                `76_favorites`
+            where
+                user_id = 1
+            group by
+                user_id
+        ),
+        1
+    )

@@ -1,0 +1,51 @@
+nav{
+    display: none !important;
+}
+
+.container{
+    width: 80%;
+}
+
+img.rounded-circle{
+    width: 10rem;
+    height: 10rem; 
+}
+
+.home{
+    width: 33.33333333%;
+    margin: 0 auto;
+}
+
+.input-home{
+    width: 30%;
+}
+
+.home-profile{
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+
+@media(max-width: 640px) {
+    #left-menu {
+        display: none !important;
+    }
+
+    nav{
+        display: block !important;
+    }
+
+    .container{
+        width: 100%;
+    }
+
+    div.rounded-circle {
+        width: 10rem;
+        margin: 0 auto;
+        height: 10rem; 
+    }
+
+    .home{
+        width: 91.6666667%;
+        margin: 0 auto;
+    }
+}

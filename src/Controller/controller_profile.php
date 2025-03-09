@@ -11,12 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-// On renvoie vers la page d'accueil
-if (!isset($_SESSION["user_id"])) {
-    header("Location: ../../public");
-    exit();
-}
-
 // On se connete a la base de donnée via pdo = création instance
 $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
 
@@ -41,7 +35,7 @@ $images = "";
 $i = 0;
 foreach ($info as $key => $value) {
     if ($_SESSION["user_id"] == $value["user_id"]) {
-        $images .= "<img src='../../assets\img\users/" . $_SESSION["user_id"] . "/" . $value["pic_name"] . "' alt='' class='col-4 p-1' style='height:15rem'>";
+        $images .= "<img src='../../assets\img\users/" . $_SESSION["user_id"] . "/" . $value["pic_name"] . "' alt='' class='col-lg-4 p-1' style='height:15rem'>";
         $i++;
     }
 }
