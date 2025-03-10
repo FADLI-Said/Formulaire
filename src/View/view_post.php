@@ -40,6 +40,7 @@
             <button type="submit" class="btn btn-primary">Post</button>
         </div>
 
+        <?= var_dump($_FILES) ?>
     </form>
 
 
