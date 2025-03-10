@@ -49,3 +49,10 @@ where
         ),
         1
     )
+insert into
+    `76_posts` (
+        `post_timestamp`,
+        `post_description`,
+        `post_private`,
+        `user_id`
+    ) value (date, description, private, user_id)

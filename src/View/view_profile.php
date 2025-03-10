@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Afpa-gram</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/css/style.css">
@@ -20,7 +20,7 @@
 
     <?= include_once "../../templates/nav.php" ?>
 
-    <div class="container ps-lg-5">
+    <div class="container ps-lg-5 mt-lg-0 mt-4">
         <div class="d-lg-flex justify-content-evenly my-3 px-5 align-items-center">
             <div class="p-lg-1 rounded-circle"
                 style="background-image: linear-gradient(to left bottom, #833ab4, #d03097, #f94c72, #ff7d53, #fcb045);">

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="position-fixed navbar navbar-expand-lg bg-body-tertiary z-2" style="width: 100%;">
     <div class="container-fluid">
         <a class="navbar-brand" href="../../src/Controller/controller_home.php">Accueil</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -20,7 +20,8 @@
                             style="width:2rem; height:2rem"></i> Recherche</a>
                 </li>
                 <li class="nav-item">
-                    <a type="button" class="list-group-item list-group-item-action border-white"><i
+                    <a type="button" href="../../src/Controller/controller_post.php"
+                        class="list-group-item list-group-item-action border-white"><i
                             class="fa-solid fa-plus border p-1 align-content-center text-center"
                             style="width:2rem; height:2rem"></i> Créer</a>
                 </li>
@@ -28,7 +29,7 @@
                     <a type="button" class="list-group-item list-group-item-action border-white"
                         href="../../src/Controller/controller_profile.php">
                         <img src="../../assets\img\dog.jpg" style="width:2rem; height:2rem" alt="Image de profile"
-                            class="rounded-circle p-1"> profile</a>
+                            class="rounded-circle p-1"> Profil</a>
                 </li>
                 <li>
                     <a type="button" class="list-group-item list-group-item-action border-white"
@@ -53,14 +54,15 @@
                 class="fa-solid fa-magnifying-glass p-1 align-content-center text-center"
                 style="width:2rem; height:2rem"></i> Recherche</a>
 
-        <a type="button" class="list-group-item list-group-item-action border-white"><i
+        <a type="button" href="../../src/Controller/controller_post.php"
+            class="list-group-item list-group-item-action border-white"><i
                 class="fa-solid fa-plus border p-1 align-content-center text-center"
                 style="width:2rem; height:2rem"></i> Créer</a>
 
         <a type="button" class="list-group-item list-group-item-action border-white"
             href="../../src/Controller/controller_profile.php">
             <img src="../../assets\img\dog.jpg" style="width:2rem; height:2rem" alt="Image de profile"
-                class="rounded-circle p-1"> profile</a>
+                class="rounded-circle p-1"> Profil</a>
     </div>
     <a type="button" class="list-group-item list-group-item-action border-white"
         href="../../src/Controller/controller_deconnexion.php"><i
