@@ -18,7 +18,7 @@
 
 <body class="mx-auto row position-relative">
 
-    <?= include_once "../../templates/nav.php" ?>
+    <?php include_once "../../templates/nav.php" ?>
 
     <div class="container ps-lg-5 mt-lg-0 mt-4">
         <div class="d-lg-flex justify-content-evenly my-3 px-5 align-items-center">

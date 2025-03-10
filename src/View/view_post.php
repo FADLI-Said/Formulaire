@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <?= include_once "../../templates/nav.php" ?>
+    <?php include_once "../../templates/nav.php" ?>
 
     <h1 class="text-center">Créer un post !</h1>
     <form action="" class="col-lg-6 mx-auto" method="POST" enctype="multipart/form-data" novalidate>
@@ -39,8 +39,6 @@
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary">Post</button>
         </div>
-
-        <?= var_dump($_FILES) ?>
     </form>
 
 
