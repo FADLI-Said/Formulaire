@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_FILES["photo"]["name"]) && !empty($_POST["description"])) {
 
         $target_dir = "../../assets/img/users/" . $_SESSION["user_id"] . "/";
-        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        $target_file = $target_dir. "_" . uniqid() . basename($_FILES["photo"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

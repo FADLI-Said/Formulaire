@@ -10,6 +10,8 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+
+
 if (isset($_GET['post'])) {
 
     $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
@@ -26,15 +28,47 @@ if (isset($_GET['post'])) {
 
     $uniquePost = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    if (!$uniquePost) {
+        header('Location: ../View/view_introuvable.php');
+        exit;
+    }
+
+    // var_dump($_GET['post']);
+
+    $sql = "SELECT COUNT(*) FROM 76_likes WHERE post_id = :post_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_STR);
+    $stmt->execute();
+    $like = $stmt->fetch(PDO::FETCH_ASSOC);
+    $like = $like['COUNT(*)'];
+
+    $sql = "SELECT COUNT(*) FROM 76_comments WHERE post_id = :post_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_STR);
+    $stmt->execute();
+    $comment = $stmt->fetch(PDO::FETCH_ASSOC);
+    $comment = $comment['COUNT(*)'];
+
+
+    $sql = "SELECT user_pseudo, com_text FROM 76_comments
+        INNER JOIN 76_users
+        ON 76_comments.user_id = 76_users.user_id
+        WHERE post_id = :post_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_STR);
+    $stmt->execute();
+    $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($comments);
+
+
+    $commentaire = '';
+    foreach ($comments as $key => $value) {
+        $commentaire .= "<p class='p-2'>" . $value['user_pseudo'] . " : " . $value['com_text'] . "</p>";
+    }
+    
 
     $pdo = '';
-
-    // var_dump($uniquePost);
-
-    // var_dump($_GET);
-
-
-
 }
 
 
