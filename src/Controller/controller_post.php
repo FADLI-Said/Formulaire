@@ -27,30 +27,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    $target_dir = "../../assets/img/users/" . $_SESSION["user_id"] . "/";
+    $newName = uniqid() . "_" . basename($_FILES["photo"]["name"]);
+    $target_file = $target_dir . $newName;
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
+    var_dump($target_file);
+
+    if (is_dir($target_dir)) {
+        echo "Le dossier existe déjà.";
+    } else {
+        mkdir($target_dir);
+    }
 
     if (!empty($_FILES["photo"]["name"]) && !empty($_POST["description"])) {
 
-        $target_dir = "../../assets/img/users/" . $_SESSION["user_id"] . "/";
-        $target_file = $target_dir. "_" . uniqid() . basename($_FILES["photo"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        if (is_dir($target_dir)) {
-            echo "Le dossier existe déjà.";
-        } else {
-            mkdir($target_dir);
-        }
-
-
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            echo "Désole, votre fichier n'a pas été téléchargé.";
             // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-                echo "The file " . htmlspecialchars(basename($_FILES["photo"]["tmp_name"])) . " has been uploaded.";
+                echo "The file " . htmlspecialchars(basename($_FILES["photo"]["tmp_name"])) . " a été téléchargé.";
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                echo "Désolé, il y a eu une erreur lors du téléchargement de votre fichier.";
             }
         }
 
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = $pdo->prepare($sql);
 
-        $stmt->bindValue(":photo", $_FILES["photo"]["name"], PDO::PARAM_STR);
+        $stmt->bindValue(":photo", $newName, PDO::PARAM_STR);
         $stmt->bindValue(":post_id", $id, PDO::PARAM_STR);
 
         if ($stmt->execute()) {

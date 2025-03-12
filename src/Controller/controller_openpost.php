@@ -61,7 +61,7 @@ if (isset($_GET['post'])) {
 
     $sql = "SELECT COUNT(*) FROM 76_comments WHERE post_id = :post_id";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_STR);
+    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_INT);
     $stmt->execute();
     $comment = $stmt->fetch(PDO::FETCH_ASSOC);
     $comment = $comment['COUNT(*)'];
@@ -73,13 +73,13 @@ if (isset($_GET['post'])) {
         WHERE post_id = :post_id";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_STR);
+    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_INT);
     $stmt->execute();
     $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $commentaires = '';
     foreach ($comments as $key => $value) {
-        $commentaires .= "<p class='p-2 overflow-x-hidden'>" . $value['user_pseudo'] . " : <br>" . $value['com_text'] . "</p>";
+        $commentaires .= "<p class='p-2 overflow-x-hidden'><span class='fw-bold fs-5'>" . $value['user_pseudo'] . "</span> : <br>" . $value['com_text'] . "</p>";
     }
 
     $pdo = '';

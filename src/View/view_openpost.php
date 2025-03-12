@@ -20,11 +20,13 @@
 
         #right-menu {
             height: 100vh;
-            
+
         }
 
         #right-menu ::-webkit-scrollbar {
             width: 0;
+            position: absolute;
+            bottom: 0;
         }
 
         @media(max-width: 992px) {
@@ -35,7 +37,7 @@
             #right-menu {
                 width: 91.6666666667%;
                 margin: 0 auto;
-                position:  relative !important;
+                position: relative !important;
                 top: auto !important;
                 right: auto !important;
                 transform: none !important;
@@ -54,10 +56,11 @@
     <div class="mx-auto" id="post">
         <div class='border home d-flex justify-content-between mt-2 p-3'>
             <div class='d-flex'>
-            <a href='controller_otherprofile.php?profile=<?= $uniquePost['user_id']?>' class='text-black text-decoration-none'>
-                <img src='../../assets\img\dog.jpg' alt='Image de profile' class='rounded-circle home-profile'>
-                <h1 class='fs-6 d-flex align-items-center my-0 ms-1'><?= $uniquePost["user_pseudo"] ?> </a> · <small class='text-body-secondary'>
-                        <?= date('d/m/Y H:i', $uniquePost["post_timestamp"]) ?></small>
+                <a href='controller_otherprofile.php?profile=<?= $uniquePost['user_id'] ?>' class='text-black text-decoration-none'>
+                    <img src='../../assets\img\dog.jpg' alt='Image de profile' class='rounded-circle home-profile'>
+                    <h1 class='fs-6 d-flex align-items-center my-0 ms-1'><?= $uniquePost["user_pseudo"] ?>
+                </a> · <small class='text-body-secondary'>
+                    <?= date('d/m/Y H:i', $uniquePost["post_timestamp"]) ?></small>
                 </h1>
             </div>
             <button class='btn align-baseline py-0 d-flex align-items-baseline fs-3'>···</button>
@@ -81,8 +84,9 @@
     <div class="position-fixed top-50 end-0 translate-middle-y list-group col-lg-3 d-flex flex-column justify-content-end border pt-2" id="right-menu">
         <div class="overflow-y-auto">
             <?= $commentaires ?>
+            <div id="lastComment"></div>
         </div>
-        <form action="" class="p-2" method="post">
+        <form action="#lastComment" class="p-2" method="post">
             <input type="text" aria-label="Commentaire" class="form-control input-group d-flex"
                 placeholder="Ajouter un commentaire..." name="comment">
         </form>
