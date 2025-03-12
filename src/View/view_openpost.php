@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <?php //include_once "../../templates/nav.php" ?>
+    <?php include_once "../../templates/nav.php" ?>
 
 
     <div class="mx-auto" id="post">
@@ -47,8 +47,7 @@
                 <?= $like ?><i class='fa-regular fa-heart btn p-1'></i>
                 <?= $comment ?><i class='fa-regular fa-comment btn p-1'></i>
             </div>
-            <p class='d-flex p-2'>Nombre de Like</p>
-            <p class='d-flex p-2'><?= $uniquePost["user_pseudo"] ?><i
+            <p class='d-flex p-2'><span class="fw-bold"><?= $uniquePost["user_pseudo"] ?></span><i
                     class='fa-solid fa-certificate fa-bounce position-relative text-primary ms-1 fs-4'>
                     <i
                         class='fa-solid fa-check fa-bounce position-absolute top-50 start-50 translate-middle z-1 text-white fs-6'></i>
@@ -56,8 +55,14 @@
         </div>
     </div>
 
-    <div class="position-fixed top-50 end-0 translate-middle-y list-group col-lg-3 d-flex flex-column justify-content-start border p-0" id="right-menu">
-        <?= $commentaire ?>
+    <div class="position-fixed top-50 end-0 translate-middle-y list-group col-lg-3 d-flex flex-column justify-content-between border p-0" id="right-menu">
+        <div>
+            <?= $commentaires ?>
+        </div>
+        <form action="" class="p-2" method="post" novalidate>
+            <input type="text" aria-label="Commentaire" class="form-control input-group d-flex p-2"
+                placeholder="Ajouter un commentaire...">
+        </form>
     </div>
 
 
