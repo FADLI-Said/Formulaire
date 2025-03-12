@@ -14,7 +14,7 @@
     <?php include_once "../../templates/nav.php" ?>
 
     <h1 class="text-center">Créer un post !</h1>
-    <form action="" class="col-lg-6 mx-auto" method="POST" enctype="multipart/form-data" novalidate>
+    <form action="" class="col-lg-6 mx-auto p-2" method="POST" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
             <label for="formFile" class="form-label"><i class="fa-solid fa-image"></i> Photo</label>
             <input class="form-control" type="file" id="formFile" name="photo" accept="image/*" required>

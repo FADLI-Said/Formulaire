@@ -34,6 +34,7 @@ foreach ($info as $key => $value) {
     $images .= "
         <div class='border home d-flex justify-content-between mt-2 p-3'>
             <div class='d-flex'>
+            
             <a href='controller_otherprofile.php?profile=" . $value['user_id'] . "' class='text-black text-decoration-none'>
                 <img src='../../assets\img\dog.jpg' alt='Image de profile' class='rounded-circle home-profile'>
                 <h1 class='fs-6 d-flex align-items-center my-0 ms-1 text-decoration-none'>" . $value["user_pseudo"] . "</a> <small class='text-body-secondary'>
@@ -50,21 +51,11 @@ foreach ($info as $key => $value) {
                 <i class='fa-regular fa-heart btn p-1'></i>
                 <i class='fa-regular fa-comment btn p-1'></i>
             </div>
-            <p class='d-flex p-2'>Nombre de Like</p>
             <p class='d-flex p-2'>" . $value["user_pseudo"] . "<i
                     class='fa-solid fa-certificate fa-bounce position-relative text-primary ms-1 fs-4'>
                     <i
                         class='fa-solid fa-check fa-bounce position-absolute top-50 start-50 translate-middle z-1 text-white fs-6'></i>
                 </i> : " . $value["post_description"] . "</p>
-            <a class='d-flex p-2 btn text-secondary'>Afficher les 'nbr de
-                commentaire'</a>
-            <div class='input-group d-flex justify-content-between p-2 btn'>
-                <input type='text' aria-label='Commentaire' class='form-control input-group d-flex p-2'
-                    placeholder='Ajouter un commentaire...'>
-                <button class='btn pe-3 position-absolute top-50 end-0 translate-middle-y' type='button'><i
-                        class='fa-solid fa-face-smile fa-spin'></i></button>
-
-            </div>
         </div>
 
         ";

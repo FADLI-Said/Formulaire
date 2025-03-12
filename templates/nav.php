@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary z-2" style="width: 100%;">
+<nav class="navbar navbar-expand-lg bg-body-tertiary z-2 position-sticky top-0" style="width: 100%;">
     <div class="container-fluid">
         <a class="navbar-brand" href="../../src/Controller/controller_home.php">Accueil</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

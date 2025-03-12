@@ -9,13 +9,30 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ../../public/');
     exit;
 }
+$regexNotempty = "/[a-zA-Z0-9\S]+/";
 
-
+$error = [];
+$pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_GET['post'])) {
 
-    $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        if (empty($_POST['comment'])) {
+            $error['comment'] = "Commentaire vide";
+        } elseif (!preg_match($regexNotempty, $_POST['comment'])) {
+            $error['comment'] = "Caractère non autorisé";
+        } else {
+            $sql = "INSERT INTO 76_comments (com_text, post_id, user_id) VALUES (:com_text, :post_id, :user_id)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':com_text', $_POST['comment'], PDO::PARAM_STR);
+            $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_INT);
+            $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+            $stmt->execute();
+        }
+    }
+
     $sql = "SELECT post_description, pic_name, user_pseudo, post_timestamp, user_id FROM 76_posts
         NATURAL JOIN 76_pictures
         NATURAL JOIN 76_users
@@ -62,27 +79,12 @@ if (isset($_GET['post'])) {
 
     $commentaires = '';
     foreach ($comments as $key => $value) {
-        $commentaires .= "<p class='p-2'>" . $value['user_pseudo'] . " : <br>" . $value['com_text'] . "</p>";
+        $commentaires .= "<p class='p-2 overflow-x-hidden'>" . $value['user_pseudo'] . " : <br>" . $value['com_text'] . "</p>";
     }
-    
 
     $pdo = '';
-
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $sql = "INSERT INTO 76_comments (com_text, post_id, user_id) VALUES (:com_text, :post_id, :user_id)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':com_text', $_POST['com_text'], PDO::PARAM_STR);
-        $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_STR);
-        $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
-        $stmt->execute();
-
-        $pdo = '';
-    }
 }
+
 
 
 

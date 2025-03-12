@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 10 mars 2025 à 07:03
+-- Généré le : mer. 12 mars 2025 à 14:57
 -- Version du serveur : 8.4.3
--- Version de PHP : 8.3.16
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,10 +29,46 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `76_comments` (
   `com_id` int NOT NULL,
-  `com_text` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `com_text` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `post_id` int NOT NULL,
   `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `76_comments`
+--
+
+INSERT INTO `76_comments` (`com_id`, `com_text`, `post_id`, `user_id`) VALUES
+(1, 'Superbe terrasse, j’adore !', 1, 2),
+(2, 'Ce menu a l’air délicieux !', 2, 3),
+(3, 'Hâte de tester cette recette !', 3, 1),
+(4, 'Happy hour, j’arrive !', 4, 2),
+(5, 'Les vins sont exceptionnels.', 5, 3),
+(6, 'Je veux goûter ce brunch !', 6, 1),
+(7, 'Ce dessert semble incroyable !', 7, 2),
+(8, 'Starfoullah le ramadan en plus !', 5, 1),
+(9, 'Wesh incr !', 1, 2),
+(10, 'Sah c\'est nul', 1, 2),
+(11, 'MUDA MUDA MUDA MUDA', 1, 2),
+(12, 'MUDA MUDA MUDA MUDA', 1, 2),
+(13, 'ORA ORA ORA ORA', 1, 2),
+(14, '6+51614', 1, 2),
+(15, 'Saïd', 1, 2),
+(16, 'Saïd', 1, 2),
+(17, 'Ichem', 1, 2),
+(18, '@Arabe_du_76 C\'est une dinguerie que tu dises sa ', 5, 2),
+(19, 'Wesh incr la version mobile', 5, 2),
+(20, 'Une hallucination collective !!!', 1, 1),
+(21, 'grzgzr', 1, 1),
+(22, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1, 1),
+(23, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1, 1),
+(24, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa', 1, 1),
+(25, 'Sah c\'est nul !', 3, 1),
+(26, 'Wesh incr !', 2, 1),
+(27, 'Ambiance parfaite pour se détendre ☀️🍹✨ Qui veut prendre un verre ici ?', 1, 1),
+(28, 'Ambiance parfaite pour se détendre ☀️🍹✨ Qui veut prendre un verre ici ?', 1, 1),
+(29, 'Sah', 1, 1),
+(30, 'Belle voiture dommage t\'as pas le permis', 8, 1);
 
 -- --------------------------------------------------------
 
@@ -45,6 +81,14 @@ CREATE TABLE `76_favorites` (
   `fav_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `76_favorites`
+--
+
+INSERT INTO `76_favorites` (`user_id`, `fav_id`) VALUES
+(2, 1),
+(1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +100,22 @@ CREATE TABLE `76_likes` (
   `user_id` int NOT NULL,
   `post_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `76_likes`
+--
+
+INSERT INTO `76_likes` (`like_id`, `user_id`, `post_id`) VALUES
+(1, 1, 2),
+(2, 1, 3),
+(3, 1, 5),
+(4, 2, 1),
+(5, 2, 4),
+(6, 2, 6),
+(7, 3, 1),
+(8, 3, 3),
+(9, 3, 5),
+(10, 3, 7);
 
 -- --------------------------------------------------------
 
@@ -80,7 +140,12 @@ INSERT INTO `76_pictures` (`pic_id`, `pic_name`, `post_id`) VALUES
 (4, 'happy_hour.jpg', 4),
 (5, 'degustation_vins.jpg', 5),
 (6, 'brunch_gourmand.jpg', 6),
-(7, 'dessert_nouveau.jpg', 7);
+(7, 'dessert_nouveau.jpg', 7),
+(9, 'ford_mustang.webp', 8),
+(18, 'audi_a4.png', 17),
+(20, 'volkswagen_golf.webp', 19),
+(21, 'ford_mustang.webp', 20),
+(22, 'chargeur_batterie.png', 21);
 
 -- --------------------------------------------------------
 
@@ -91,7 +156,7 @@ INSERT INTO `76_pictures` (`pic_id`, `pic_name`, `post_id`) VALUES
 CREATE TABLE `76_posts` (
   `post_id` int NOT NULL,
   `post_timestamp` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `post_description` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `post_description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `post_private` tinyint NOT NULL DEFAULT '0',
   `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -107,7 +172,13 @@ INSERT INTO `76_posts` (`post_id`, `post_timestamp`, `post_description`, `post_p
 (4, '1735912800', 'Offre spéciale happy hour', 0, 1),
 (5, '1735924800', 'Soirée dégustation vins', 0, 1),
 (6, '1735968900', 'Brunch gourmand à tester', 0, 2),
-(7, '1735986600', 'Nouveau dessert au menu', 0, 2);
+(7, '1735986600', 'Nouveau dessert au menu', 0, 2),
+(8, '1741608869', 'Belle voiture mashallah', 0, 1),
+(9, '1741609066', 'Au pif on s&#039;en blc', 0, 1),
+(17, '1741615774', 'Wesh', 0, 4),
+(19, '1741615861', 'Vols', 0, 4),
+(20, '1741615902', 'Ma voiture', 0, 3),
+(21, '1741687829', 'Sa charge même ta mère et ton père', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +192,7 @@ CREATE TABLE `76_users` (
   `user_lastname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_firstname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_pseudo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `user_avatar` varchar(25) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'avatar.png',
+  `user_avatar` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'avatar.png',
   `user_birthdate` date NOT NULL,
   `user_mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -135,7 +206,8 @@ CREATE TABLE `76_users` (
 INSERT INTO `76_users` (`user_id`, `user_gender`, `user_lastname`, `user_firstname`, `user_pseudo`, `user_avatar`, `user_birthdate`, `user_mail`, `user_password`, `user_activated`) VALUES
 (1, 'homme', 'BARBIER', 'Théo', 'Xx_La-Barbe_xX', 'avatar.png', '1900-01-01', 'barbier@theo.fr', '$2y$10$KBtYJWO30WJCz7QnAlVTKuuzziTsC7n3QRwW.mxBM3NgwkY1StVIa', 1),
 (2, 'homme', 'JOURDAIN', 'Ichem', 'mattong', 'avatar.png', '1995-09-27', 'tanjiro76610@outlook.fr', '$2y$10$ly99CKS4b9IuHp8IwZAMGOKj.A637.0GwdbR7gdhP24S4/H5iB7.6', 1),
-(3, 'homme', 'MAHJOUB', 'Ridha', 'Arabe_du_76', 'avatar.png', '1900-01-01', 'mahjoub@ridha.dz', '$2y$10$g6Jkt1R7Q8HC3KIiPhftdOE52usGif2qRKX9a17v/Dmz.diqhgls6', 1);
+(3, 'homme', 'MAHJOUB', 'Ridha', 'Arabe_du_76', 'avatar.png', '1900-01-01', 'mahjoub@ridha.dz', '$2y$10$g6Jkt1R7Q8HC3KIiPhftdOE52usGif2qRKX9a17v/Dmz.diqhgls6', 1),
+(4, 'homme', 'FADLI', 'Saïd', 'Xx_Dark-Sasuke_xX', 'avatar.png', '2002-07-04', 'saidfadli213@gmail.com', '$2y$10$CMlarqrC/VDNp4BLNjZ.IO.hv9.iMVIN2Qhz42Z6FBm.sr.147J52', 1);
 
 --
 -- Index pour les tables déchargées
@@ -191,28 +263,34 @@ ALTER TABLE `76_users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `76_comments`
+--
+ALTER TABLE `76_comments`
+  MODIFY `com_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
 -- AUTO_INCREMENT pour la table `76_likes`
 --
 ALTER TABLE `76_likes`
-  MODIFY `like_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `like_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `76_pictures`
 --
 ALTER TABLE `76_pictures`
-  MODIFY `pic_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `pic_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `76_posts`
 --
 ALTER TABLE `76_posts`
-  MODIFY `post_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `post_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `76_users`
 --
 ALTER TABLE `76_users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
