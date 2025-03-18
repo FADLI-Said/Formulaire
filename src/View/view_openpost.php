@@ -83,7 +83,7 @@
 
     <div class="position-fixed top-50 end-0 translate-middle-y list-group col-lg-3 d-flex flex-column justify-content-end border pt-2" id="right-menu">
         <div class="overflow-y-auto">
-            <?= $commentaires ?>
+            <?= Comments::showComments($uniquePost["user_id"]) ?>
             <div id="lastComment"></div>
         </div>
         <form action="#lastComment" class="p-2" method="post">
