@@ -2,6 +2,7 @@
 
 require_once "../../config.php";
 require_once "../Model/model_comments.php";
+require_once "../Model/model_like.php";
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -36,42 +37,6 @@ if (isset($_GET['post'])) {
         header('Location: ../View/view_introuvable.php');
         exit;
     }
-
-    // var_dump($_GET['post']);
-
-    $sql = "SELECT COUNT(*) FROM 76_likes WHERE post_id = :post_id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_STR);
-    $stmt->execute();
-    $like = $stmt->fetch(PDO::FETCH_ASSOC);
-    $like = $like['COUNT(*)'];
-
-    $sql = "SELECT COUNT(*) FROM 76_comments WHERE post_id = :post_id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':post_id', $_GET['post'], PDO::PARAM_INT);
-    $stmt->execute();
-    $comment = $stmt->fetch(PDO::FETCH_ASSOC);
-    $comment = $comment['COUNT(*)'];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 include_once '../View/view_openpost.php';

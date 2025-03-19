@@ -46,9 +46,9 @@
                     </div>
                 </div>
                 <div class="d-flex gap-4 mt-lg-0 mt-2">
-                    <p><?= $i ?> Posts</p>
-                    <p>6 Followers</p>
-                    <p>15 Following</p>
+                    <p><?= Profile::countPost($_SESSION["user_id"]) ?> Posts</p>
+                    <p><?= Profile::countFollowers($_SESSION["user_id"]) ?> Followers</p>
+                    <p><?= Profile::countFollows($_SESSION["user_id"]) ?> Following</p>
                 </div>
                 <p>C'est moi wesh !</p>
             </div>

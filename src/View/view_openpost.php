@@ -50,7 +50,11 @@
 </head>
 
 <body>
-    <?php include_once "../../templates/nav.php" ?>
+    <?php
+
+use Dom\Comment;
+
+include_once "../../templates/nav.php" ?>
 
 
     <div class="mx-auto" id="post">
@@ -70,8 +74,8 @@
 
         <div class='border home'>
             <div class='d-flex p-2'>
-                <?= $like ?><i class='fa-regular fa-heart btn p-1'></i>
-                <?= $comment ?><i class='fa-regular fa-comment btn p-1'></i>
+                <?= Like::countLike($_GET["post"]) ?><i class='fa-regular fa-heart btn p-1'></i>
+                <?= Comments::countComment($_GET["post"]) ?><i class='fa-regular fa-comment btn p-1'></i>
             </div>
             <p class='d-flex p-2'><span class="fw-bold"><?= $uniquePost["user_pseudo"] ?></span><i
                     class='fa-solid fa-certificate fa-bounce position-relative text-primary ms-1 fs-4'>
