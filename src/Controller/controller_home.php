@@ -2,6 +2,8 @@
 
 session_start();
 
+require_once "../Model/model_comments.php";
+require_once "../Model/model_like.php";
 require_once "../../config.php";
 
 if (!isset($_SESSION['user_id'])) {
@@ -48,8 +50,8 @@ foreach ($info as $key => $value) {
         </a>
         <div class='border home'>
             <div class='d-flex p-2'>
-                <i class='fa-regular fa-heart btn p-1'></i>
-                <i class='fa-regular fa-comment btn p-1'></i>
+                " . Like::countLike($value["post_id"]) . "<i class='fa-regular fa-heart btn p-1'></i>
+                " . Comments::countComment($value["post_id"]) . "<a href='controller_openpost.php?post=" . $value['post_id'] . "'><i class='fa-regular fa-comment btn p-1'></i></a>
             </div>
             <p class='d-flex p-2'>" . $value["user_pseudo"] . "<i
                     class='fa-solid fa-certificate fa-bounce position-relative text-primary ms-1 fs-4'>
@@ -60,11 +62,8 @@ foreach ($info as $key => $value) {
 
         ";
     $i++;
-
 }
 
 
 
 include_once '../View/view_home.php';
-
-?>

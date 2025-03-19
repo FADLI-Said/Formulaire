@@ -52,9 +52,9 @@
 <body>
     <?php
 
-use Dom\Comment;
+    use Dom\Comment;
 
-include_once "../../templates/nav.php" ?>
+    include_once "../../templates/nav.php" ?>
 
 
     <div class="mx-auto" id="post">
@@ -87,7 +87,7 @@ include_once "../../templates/nav.php" ?>
 
     <div class="position-fixed top-50 end-0 translate-middle-y list-group col-lg-3 d-flex flex-column justify-content-end border pt-2" id="right-menu">
         <div class="overflow-y-auto">
-            <?= Comments::showComments($uniquePost["user_id"]) ?>
+            <?= $commentaires ?>
             <div id="lastComment"></div>
         </div>
         <form action="#lastComment" class="p-2" method="post">
@@ -97,11 +97,21 @@ include_once "../../templates/nav.php" ?>
     </div>
 
 
-
+    <script>
+        document.querySelectorAll('[id^="liveToastBtn"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const i = btn.id.replace('liveToastBtn', '');
+                const toastEl = document.getElementById('liveToast' + i);
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastEl);
+                toastBootstrap.show();
+            });
+        });
+    </script>
     <script src="https://kit.fontawesome.com/50a1934b21.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
