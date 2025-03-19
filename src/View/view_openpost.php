@@ -67,7 +67,14 @@
                     <?= date('d/m/Y H:i', $uniquePost["post_timestamp"]) ?></small>
                 </h1>
             </div>
-            <button class='btn align-baseline py-0 d-flex align-items-baseline fs-3'>···</button>
+            <?php if ($_SESSION["user_id"] == $uniquePost["user_id"]) { ?>
+            <div class="dropdown">
+                <button class='btn align-baseline py-0 fs-3' type="button" data-bs-toggle="dropdown" aria-expanded="false">···</button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../Controller/controller_supp.php?supp=<?= $uniquePost["post_id"] ?>">Supprimer</a></li>
+                </ul>
+            </div>
+            <?php } ?> 
         </div>
 
         <img src='../../assets\img\users/<?= $uniquePost["user_id"] ?>/<?= $uniquePost["pic_name"] ?>' alt='' class='col-lg-6 col-11 mx-auto d-block'>
@@ -93,7 +100,9 @@
         <form action="#lastComment" class="p-2" method="post">
             <input type="text" aria-label="Commentaire" class="form-control input-group d-flex"
                 placeholder="Ajouter un commentaire..." name="comment">
+
         </form>
+        <p class="p-2 text-danger"><?= $error["comment"] ?? '' ?></p>
     </div>
 
 

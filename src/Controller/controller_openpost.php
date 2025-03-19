@@ -1,11 +1,11 @@
 <?php
 
-use Dom\Comment;
-
+session_start();
 require_once "../../config.php";
 require_once "../Model/model_comments.php";
+require_once "../Model/model_post.php";
 require_once "../Model/model_like.php";
-session_start();
+
 
 if (!isset($_SESSION['user_id'])) {
     // on renvoie vers la page d'accueil
@@ -14,10 +14,9 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    Comments::addComment($_POST['comment'], $_GET['post'], $_SESSION['user_id']);
+    $error = Comments::addComment($_POST['comment'], $_GET['post'], $_SESSION['user_id']);
 }
 
-$error = [];
 $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -79,7 +78,6 @@ foreach ($comments as $value) {
         </div>";
     $i++;
 }
-
 
 if (isset($_GET['com'])) {
     Comments::deleteComment($_GET['com']);
