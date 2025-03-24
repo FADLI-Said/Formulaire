@@ -28,7 +28,7 @@
                 <li class="nav-item">
                     <a type="button" class="list-group-item list-group-item-action border-white"
                         href="../../src/Controller/controller_profile.php">
-                        <img src="../../assets\img\dog.jpg" style="width:2rem; height:2rem" alt="Image de profile"
+                        <img src="../../assets\img\users/<?= $_SESSION["user_id"] ?>/avatar/<?= $_SESSION["user_avatar"] ?>" style="width:2rem; height:2rem" alt="Image de profile"
                             class="rounded-circle p-1"> Profil</a>
                 </li>
                 <li>
@@ -61,7 +61,7 @@
 
         <a type="button" class="list-group-item list-group-item-action border-white"
             href="../../src/Controller/controller_profile.php">
-            <img src="../../assets\img\dog.jpg" style="width:2rem; height:2rem" alt="Image de profile"
+            <img src="../../assets\img\users/<?= $_SESSION["user_id"] ?>/avatar/<?= $_SESSION["user_avatar"] ?>" style="width:2rem; height:2rem" alt="Image de profile"
                 class="rounded-circle p-1"> Profil</a>
     </div>
     <a type="button" class="list-group-item list-group-item-action border-white"

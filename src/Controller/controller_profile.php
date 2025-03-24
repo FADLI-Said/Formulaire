@@ -33,14 +33,12 @@ $info = $stmt->fetchAll();
 
 
 $images = "";
-$i = 0;
 foreach ($info as $key => $value) {
     if ($_SESSION["user_id"] == $value["user_id"]) {
         $images .= "
         <a href='controller_openpost.php?post=" . $value['post_id'] . "' class='col-lg-4 p-1'>
-        <img src='../../assets\img\users/" . $_SESSION["user_id"] . "/" . $value["pic_name"] . "' alt='' class='col-12' style='height:15rem'>
+        <img src='../../assets\img\users/" . $_SESSION["user_id"] . "/" . $value["pic_name"] . "' alt='Image du poste de ". $value["post_description"] ."' class='col-12' style='height:15rem'>
          </a>";
-        $i++;
     }
 }
 

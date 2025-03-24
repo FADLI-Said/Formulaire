@@ -26,7 +26,7 @@
                 style="background-image: linear-gradient(to left bottom, #833ab4, #d03097, #f94c72, #ff7d53, #fcb045);">
                 <div class="p-lg-1 rounded-circle" style="background-color:white;">
 
-                    <img src="../../assets\img\dog.jpg" alt="Image de profile" class="rounded-circle">
+                    <img src="../../assets\img\<?= $_SESSION["user_avatar"] ?>" alt="Image de profile" class="rounded-circle">
 
                 </div>
             </div>
@@ -39,16 +39,13 @@
                         </i>
                     </h1>
                     <div class="d-flex gap-2 mt-lg-0 mt-2">
-                        <button class="btn btn-primary align-middle p-1 my-auto" style="height: 2rem;">Suivre <i
-                                class="fa-solid fa-heart"></i></button>
-                        <button class="btn btn-primary align-middle p-1 my-auto" style="height: 2rem;">Contacter <i
-                                class="fa-solid fa-comment"></i></button>
+                        <a class="btn btn-primary align-middle p-1 my-auto" style="height: 2rem;" href="?profile=<?= $uniqueUser[0]["user_id"] ?>&user=<?= $uniqueUser[0]["user_id"] ?>">Suivre <i class="fa-regular fa-heart"></i></a>
                     </div>
                 </div>
                 <div class="d-flex gap-4 mt-lg-0 mt-2">
-                    <p><?= Profile::countPost($_GET["profile"]) ?> Posts</p>
-                    <p><?= Profile::countFollowers($_GET["profile"]) ?> Followers</p>
-                    <p><?= Profile::countFollows($_GET["profile"]) ?> Following</p>
+                    <p><?= Profile::countPost($_GET["profile"]) ?> Post(s)</p>
+                    <p><?= Profile::countFollowers($_GET["profile"]) ?> Follower(s)</p>
+                    <p><?= Profile::countFollows($_GET["profile"]) ?> Following(s)</p>
                 </div>
                 <p>C'est moi wesh !</p>
             </div>

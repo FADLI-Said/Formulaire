@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Afpa-gram</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../../assets/css/style.css">
@@ -61,20 +61,20 @@
         <div class='border home d-flex justify-content-between mt-2 p-3'>
             <div class='d-flex'>
                 <a href='controller_otherprofile.php?profile=<?= $uniquePost['user_id'] ?>' class='text-black text-decoration-none'>
-                    <img src='../../assets\img\dog.jpg' alt='Image de profile' class='rounded-circle home-profile'>
+                    <img src='../../assets\img\users/<?= $uniquePost["user_id"] ?>/avatar/<?= $uniquePost["user_avatar"] ?>' alt='Image de profile' class='rounded-circle home-profile'>
                     <h1 class='fs-6 d-flex align-items-center my-0 ms-1'><?= $uniquePost["user_pseudo"] ?>
                 </a> · <small class='text-body-secondary'>
                     <?= date('d/m/Y H:i', $uniquePost["post_timestamp"]) ?></small>
                 </h1>
             </div>
             <?php if ($_SESSION["user_id"] == $uniquePost["user_id"]) { ?>
-            <div class="dropdown">
-                <button class='btn align-baseline py-0 fs-3' type="button" data-bs-toggle="dropdown" aria-expanded="false">···</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../Controller/controller_supp.php?supp=<?= $uniquePost["post_id"] ?>">Supprimer</a></li>
-                </ul>
-            </div>
-            <?php } ?> 
+                <div class="dropdown">
+                    <button class='btn align-baseline py-0 fs-3' type="button" data-bs-toggle="dropdown" aria-expanded="false">···</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../Controller/controller_supp.php?supp=<?= $uniquePost["post_id"] ?>">Supprimer</a></li>
+                    </ul>
+                </div>
+            <?php } ?>
         </div>
 
         <img src='../../assets\img\users/<?= $uniquePost["user_id"] ?>/<?= $uniquePost["pic_name"] ?>' alt='' class='col-lg-6 col-11 mx-auto d-block'>

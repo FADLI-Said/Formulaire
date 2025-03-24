@@ -22,7 +22,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_GET['post'])) {
 
-    $sql = "SELECT post_description, pic_name, user_pseudo, post_timestamp, user_id, post_id FROM 76_posts
+    $sql = "SELECT post_description, pic_name, user_pseudo, post_timestamp, user_id, post_id, user_avatar FROM 76_posts
         NATURAL JOIN 76_pictures
         NATURAL JOIN 76_users
         WHERE post_id = :pic_id";
@@ -61,18 +61,18 @@ foreach ($comments as $value) {
             <span class='fw-bold fs-5'>" . $value['user_pseudo'] . "</span>
             <small>" . date("d/m/Y H:i", (int)$value["com_timestamp"] + 3600) . "</small>
             " . ($_SESSION["user_id"] == $value["user_id"] ? "
-                <button class='btn btn-primary p-1' id='liveToastBtn{". $value["com_id"] ."}'>
+                <button class='btn btn-primary p-1' id='liveToastBtn{" . $value["com_id"] . "}'>
                     Supprimer
                 </button>" : "") . "<br>" . $value['com_text'] . "
         </p>
         <div class='toast-container position-fixed bottom-0 end-0 p-3'>
-            <div id='liveToast{". $value["com_id"] ."}' class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
+            <div id='liveToast{" . $value["com_id"] . "}' class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
                 <div class='toast-header'>
-                    <strong class='me-auto'>".$value["user_pseudo"]."</strong>
+                    <strong class='me-auto'>" . $value["user_pseudo"] . "</strong>
                     <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
                 </div>
                 <div class='toast-body'>
-                    <a href='?post=".$uniquePost["post_id"]."&com=". $value["com_id"] ."'>Confirmer</a>
+                    <a href='?post=" . $uniquePost["post_id"] . "&com=" . $value["com_id"] . "'>Confirmer</a>
                 </div>
             </div>
         </div>";

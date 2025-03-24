@@ -26,7 +26,7 @@
                 style="background-image: linear-gradient(to left bottom, #833ab4, #d03097, #f94c72, #ff7d53, #fcb045);">
                 <div class="p-lg-1 rounded-circle" style="background-color:white;">
 
-                    <img src="../../assets\img\dog.jpg" alt="Image de profile" class="rounded-circle">
+                    <img src="../../assets\img\users/<?= $_SESSION["user_id"] ?>/avatar/<?= $_SESSION["user_avatar"] ?>" alt="Image de profile" class="rounded-circle">
 
                 </div>
             </div>
@@ -38,19 +38,14 @@
                                 class="fa-solid fa-check fa-bounce position-absolute top-50 start-50 translate-middle z-1 text-white fs-6"></i>
                         </i>
                     </h1>
-                    <div class="d-flex gap-2 mt-lg-0 mt-2">
-                        <button class="btn btn-primary align-middle p-1 my-auto" style="height: 2rem;">Suivre <i
-                                class="fa-solid fa-heart"></i></button>
-                        <button class="btn btn-primary align-middle p-1 my-auto" style="height: 2rem;">Contacter <i
-                                class="fa-solid fa-comment"></i></button>
-                    </div>
+                    <a class="btn btn-primary" href="../Controller/controller_modif.php?supp=<?= $_SESSION["user_id"] ?>">Modifier le profil</a>
                 </div>
                 <div class="d-flex gap-4 mt-lg-0 mt-2">
-                    <p><?= Profile::countPost($_SESSION["user_id"]) ?> Posts</p>
-                    <p><?= Profile::countFollowers($_SESSION["user_id"]) ?> Followers</p>
-                    <p><?= Profile::countFollows($_SESSION["user_id"]) ?> Following</p>
+                    <p><?= Profile::countPost($_SESSION["user_id"]) ?> Post(s)</p>
+                    <p><?= Profile::countFollowers($_SESSION["user_id"]) ?> Follower(s)</p>
+                    <p><?= Profile::countFollows($_SESSION["user_id"]) ?> Following(s)</p>
                 </div>
-                <p>C'est moi wesh !</p>
+                <p><?= $_SESSION["user_description"] ?></p>
             </div>
         </div>
 

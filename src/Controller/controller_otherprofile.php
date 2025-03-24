@@ -55,23 +55,10 @@ if (isset($_GET['profile'])) {
     $pdo = '';
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if (isset($_GET['user'])) {
+    Profile::addFavorite($_SESSION['user_id'], $_GET['user']);
+    header('Location: controller_otherprofile.php?profile=' . $_GET['user']);
+    exit;
+}
 
 include_once '../View/view_otherprofile.php';

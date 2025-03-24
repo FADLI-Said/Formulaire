@@ -29,6 +29,7 @@ $stmt->execute();
 $info = $stmt->fetchAll();
 // var_dump($info);
 
+
 $images = "";
 $i = 0;
 foreach ($info as $key => $value) {
@@ -38,7 +39,7 @@ foreach ($info as $key => $value) {
             <div class='d-flex'>
             
             <a href='controller_otherprofile.php?profile=" . $value['user_id'] . "' class='text-black text-decoration-none'>
-                <img src='../../assets\img\dog.jpg' alt='Image de profile' class='rounded-circle home-profile'>
+                <img src='../../assets\img/users/" . $value["user_id"] . "/avatar/" . $value['user_avatar'] . "' alt='Image de profile' class='rounded-circle home-profile'>
                 <h1 class='fs-6 d-flex align-items-center my-0 ms-1 text-decoration-none'>" . $value["user_pseudo"] . "</a> <small class='text-body-secondary'>
                         · " . date('d/m/Y H:i', $value["post_timestamp"]) . "</small>
                 </h1>

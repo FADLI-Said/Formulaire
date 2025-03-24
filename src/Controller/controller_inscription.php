@@ -186,8 +186,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // On exécute la requête
 
         if ($stmt->execute()) {
-            header("Location: controller_confirmation.php");
-            exit;
+            $lastId = $pdo->lastInsertId();
+            $destination = __DIR__ . "/../../assets/img/users/" . $lastId . "/avatar";
+            $source = __DIR__ . "/../../assets\img\avatar.png";
+            $new_file = $destination . '/avatar.png';
+
+            if (mkdir($destination, 0777, true)) {
+                if (copy($source, $new_file)) {
+                    header('Location: controller_confirmation.php');
+                    exit();
+                }
+            }
         }
 
         // On "supprime" l'instance $pdo

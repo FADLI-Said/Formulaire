@@ -20,6 +20,8 @@ class Comments
             $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->bindValue(':com_timestamp', time(), PDO::PARAM_STR);
             $stmt->execute();
+            header('Location: controller_openpost.php?post=' . $post_id);
+            exit;
         }
         return $error;
     }

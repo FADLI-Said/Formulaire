@@ -33,27 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    var_dump($target_file);
-
-    if (is_dir($target_dir)) {
-        echo "Le dossier existe déjà.";
-    } else {
-        mkdir($target_dir);
-    }
-
     if (!empty($_FILES["photo"]["name"]) && !empty($_POST["description"])) {
 
-        if ($uploadOk == 0) {
-            echo "Désole, votre fichier n'a pas été téléchargé.";
-            // if everything is ok, try to upload file
+        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+            echo "The file " . htmlspecialchars(basename($_FILES["photo"]["tmp_name"])) . " a été téléchargé.";
         } else {
-            if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-                echo "The file " . htmlspecialchars(basename($_FILES["photo"]["tmp_name"])) . " a été téléchargé.";
-            } else {
-                echo "Désolé, il y a eu une erreur lors du téléchargement de votre fichier.";
-            }
+            echo "Désolé, il y a eu une erreur lors du téléchargement de votre fichier.";
         }
-
 
         // On se connete a la base de donnée via pdo = création instance
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
