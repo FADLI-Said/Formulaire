@@ -2,6 +2,12 @@
 class Like
 {
 
+    /**
+     * Compte le nombre de like d'un post
+     * 
+     * @param int $post_id
+     * @return int
+     */
     public static function countLike($post_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
@@ -15,6 +21,13 @@ class Like
         return $like;
     }
 
+    /**
+     * Rajoute un like à un post
+     * 
+     * @param int $post_id
+     * @param int $user_id
+     * @return void
+     */
     public static function addLike($post_id, $user_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);

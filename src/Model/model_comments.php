@@ -2,6 +2,12 @@
 
 class Comments
 {
+    /**
+     * Rajooute un commentaire à un post
+     * 
+     * @param string $com_text
+     * @return array
+     */
     public static function addComment(string $com_text, int $post_id, int $user_id)
     {
         $error = [];
@@ -26,6 +32,12 @@ class Comments
         return $error;
     }
 
+    /**
+     * Compte le nombre de commentaires d'un post
+     * 
+     * @param int $post_id
+     * @return int
+     */
     public static function countComment($post_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
@@ -39,6 +51,12 @@ class Comments
         return $comment;
     }
 
+    /**
+     * Supprime un commentaire
+     * 
+     * @param int $com_id
+     * @return void
+     */
     public static function deleteComment($com_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);

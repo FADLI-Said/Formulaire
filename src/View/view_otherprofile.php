@@ -26,7 +26,7 @@
                 style="background-image: linear-gradient(to left bottom, #833ab4, #d03097, #f94c72, #ff7d53, #fcb045);">
                 <div class="p-lg-1 rounded-circle" style="background-color:white;">
 
-                    <img src="../../assets\img\<?= $_SESSION["user_avatar"] ?>" alt="Image de profile" class="rounded-circle">
+                    <img src="../../assets\img\users/<?= $uniqueUser[0]["user_id"] ?>/avatar/<?= $uniqueUser[0]["user_avatar"] ?>" alt="Image de profile" class="rounded-circle">
 
                 </div>
             </div>

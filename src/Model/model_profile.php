@@ -2,6 +2,12 @@
 
 class Profile
 {
+    /**
+     * Compte le nombre de post d'un utilisateur
+     * 
+     * @param int $user_id
+     * @return int
+     */
     public static function countPost($user_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
@@ -17,6 +23,12 @@ class Profile
         return $posts;
     }
 
+    /**
+     * Compte le nombre de followers d'un utilisateur
+     * 
+     * @param int $user_id
+     * @return int
+     */
     public static function countFollowers($user_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
@@ -32,6 +44,12 @@ class Profile
         return $followers;
     }
 
+    /**
+     * Compte le nombre de follows d'un utilisateur
+     * 
+     * @param int $user_id
+     * @return int
+     */
     public static function countFollows($user_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
@@ -47,6 +65,12 @@ class Profile
         return $follows;
     }
 
+    /**
+     * Ajoute un utilisateur en favoris
+     * 
+     * @param int $user_id
+     * @param int $fav_id
+     */
     public static function addFavorite($user_id, $fav_id)
     {
         $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
